@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: veloop-rewards
+    runtime: static
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://veloop-backend.onrender.com/api/*
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -5,7 +5,10 @@
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-7952B3.svg)](https://getbootstrap.com/)
 [![License](https://img.shields.io/badge/License-Private-green.svg)]()
 
-A modern, responsive rewards application engineered for the **VELOOP Rewards** platform. This repository contains the complete implementation and UI/UX redesign for **Task 04: Watch Ads Page Redesign**, adhering to high standards of fintech UI design, accessibility, and backend security.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/uvv-01/veloop-rewards)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/uvv-01/veloop-rewards)
+
+Live Application: [https://uvv-01.github.io/veloop-rewards/#/watch-Ads](https://uvv-01.github.io/veloop-rewards/#/watch-Ads)
 
 ---
 
