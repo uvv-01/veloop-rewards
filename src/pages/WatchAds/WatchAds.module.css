@@ -1,0 +1,936 @@
+/* ==========================================================================
+   Watch Ads Redesign — Scoped CSS Module (VELoop Rewards)
+   ========================================================================== */
+
+.pageColor {
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%, #111438 0%, #060714 60%, #04050d 100%);
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+.heroCard {
+  position: relative;
+  background: linear-gradient(135deg, rgba(21, 24, 51, 0.85), rgba(15, 18, 38, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 36px 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.heroGlow1 {
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.heroGlow2 {
+  position: absolute;
+  bottom: -60px;
+  left: 20%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #34d399;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.heroTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+.highlightGold {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroDescription {
+  font-size: 15px;
+  color: #94a3b8;
+  max-width: 680px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.heroPillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.heroStatPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   Earnings Overview Grid
+   -------------------------------------------------------------------------- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.statMiniCard {
+  background: linear-gradient(135deg, rgba(21, 24, 51, 0.6), rgba(15, 18, 38, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.statMiniCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.statIconBox {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.statLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.statValue {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Daily Progress Bar
+   -------------------------------------------------------------------------- */
+.progressContainer {
+  background: rgba(21, 24, 51, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 14px 20px;
+}
+
+.progressLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.progressPercent {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.progressBarTrack {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Advertisement Card
+   -------------------------------------------------------------------------- */
+.adCard {
+  position: relative;
+  background: linear-gradient(135deg, #1c2042 0%, #131733 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.adCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+/* Ambient Top Sweeping Glow Border */
+.adCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 140%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.8), rgba(6, 182, 212, 0.8), transparent);
+  animation: rewardGlow 4s linear infinite;
+}
+
+@keyframes rewardGlow {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+.adCardCooldown {
+  background: linear-gradient(135deg, #161830 0%, #0f1122 100%);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+.adCardCooldown::before {
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+}
+
+/* Sparkles */
+.sparkle1, .sparkle2 {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fbbf24;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparklePulse 2.4s infinite alternate ease-in-out;
+}
+
+.sparkle1 { top: 18px; right: 28px; }
+.sparkle2 { top: 22px; left: 32px; animation-delay: 1.2s; }
+
+@keyframes sparklePulse {
+  0% { opacity: 0.15; transform: scale(0.8); }
+  100% { opacity: 0.9; transform: scale(1.6); }
+}
+
+.adCardLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.adIconBox {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.45);
+  flex-shrink: 0;
+}
+
+.cooldownBadgeIcon {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background: #f59e0b;
+  border: 2px solid #131733;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.adTvIcon {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.adInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.adTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.slotTag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.rewardLine {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.coinBadge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.coinIcon {
+  color: #fbbf24;
+  font-size: 18px;
+}
+
+.coinAmount {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+.coinLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.statusReady {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.statusCooldown {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.adCardRight {
+  flex-shrink: 0;
+}
+
+.watchButton {
+  min-width: 140px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.watchButton:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}
+
+.watchButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  background: #1e2442;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+}
+
+.buttonLoading {
+  background: #1e2442 !important;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   Earning Rules & Information
+   -------------------------------------------------------------------------- */
+.infoCard {
+  background: linear-gradient(135deg, rgba(21, 24, 51, 0.6), rgba(15, 18, 38, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 24px 28px;
+}
+
+.infoHeading {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.infoStepBox {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 16px;
+  height: 100%;
+}
+
+.stepNum {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.stepTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.stepDesc {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Empty State
+   -------------------------------------------------------------------------- */
+.emptyCard {
+  background: rgba(21, 24, 51, 0.6);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 48px 24px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.emptyIconCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.emptyTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.emptySubtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.refreshButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  color: #60a5fa;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.refreshButton:hover {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Error State (Fix 2)
+   -------------------------------------------------------------------------- */
+.errorCard {
+  background: rgba(30, 20, 28, 0.6);
+  border: 1px dashed rgba(239, 68, 68, 0.3);
+  border-radius: 20px;
+  padding: 48px 24px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.errorIconCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.errorTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.errorSubtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.retryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 12px;
+  color: #f87171;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.retryButton:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Loading Skeleton
+   -------------------------------------------------------------------------- */
+.skeletonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeletonCard {
+  background: rgba(21, 24, 51, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 18px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skeletonLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.skeletonIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonTexts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonLineShort {
+  width: 140px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonLineLong {
+  width: 220px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonButton {
+  width: 140px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+/* --------------------------------------------------------------------------
+   Reward Celebration Modal
+   -------------------------------------------------------------------------- */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 5, 13, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modalCard {
+  position: relative;
+  background: linear-gradient(135deg, #1e2246 0%, #12152e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 36px 32px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(16, 185, 129, 0.2);
+  animation: modalEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.successIconWrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.successPulse {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid #10b981;
+  animation: pulseOut 1.8s infinite;
+}
+
+@keyframes pulseOut {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.modalTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.modalSubtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 22px;
+}
+
+.rewardPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 30px;
+  padding: 10px 24px;
+  margin-bottom: 16px;
+}
+
+.rewardPillAmount {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+.rewardPillUnit {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.modalFootnote {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.modalConfirmBtn {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+}
+
+.modalConfirmBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet & Smaller Desktops */
+@media (max-width: 991px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .heroTitle {
+    font-size: 26px;
+  }
+}
+
+/* Mobile Devices (<= 576px) */
+@media (max-width: 576px) {
+  .heroCard {
+    padding: 24px 20px;
+  }
+  .heroTitle {
+    font-size: 22px;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .adCard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+  }
+  .adCardLeft {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .rewardLine {
+    justify-content: center;
+  }
+  .watchButton {
+    width: 100%;
+  }
+  .skeletonCard {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .skeletonLeft {
+    flex-direction: column;
+    text-align: center;
+  }
+  .skeletonButton {
+    width: 100%;
+  }
+}
+
+/* Extra Small (320px - 375px) */
+@media (max-width: 375px) {
+  .heroTitle {
+    font-size: 20px;
+  }
+  .heroDescription {
+    font-size: 13px;
+  }
+  .coinAmount {
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================================
+   Accessibility Focus-Visible Indicators (Fix 4)
+   ========================================================================== */
+.watchButton:focus-visible,
+.refreshButton:focus-visible,
+.retryButton:focus-visible,
+.modalConfirmBtn:focus-visible,
+.modalCloseBtn:focus-visible {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.45) !important;
+}
+
+/* ==========================================================================
+   Prefers-Reduced-Motion (Fix 3)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .adCard::before,
+  .sparkle1,
+  .sparkle2,
+  .successPulse,
+  .skeletonIcon,
+  .skeletonLine1,
+  .skeletonLine2,
+  .skeletonButton,
+  .spinner {
+    animation: none !important;
+  }
+
+  .sparkle1,
+  .sparkle2,
+  .successPulse {
+    display: none !important;
+  }
+
+  .modalCard {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .adCard:hover,
+  .statMiniCard:hover,
+  .watchButton:hover,
+  .refreshButton:hover,
+  .retryButton:hover,
+  .modalConfirmBtn:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
