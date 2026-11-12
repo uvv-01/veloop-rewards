@@ -1,11 +1,14 @@
 import axios from 'axios';
 
-// In production on deployed hosts (e.g. Vercel), use empty baseURL ('') so requests
-// hit the same-origin reverse proxy (/api/...) and avoid cross-origin CORS blocks.
-// In local development or when explicitly provided, use VITE_API_BASE_URL or fallback to Render.
+// In production on deployed hosts with edge rewrites (e.g. Vercel, Netlify), use empty baseURL ('')
+// so requests hit the same-origin reverse proxy (/api/...) and avoid cross-origin CORS blocks.
+// In local development, GitHub Pages, or when explicitly specified via VITE_API_BASE_URL, use target URL.
+const isGitHubPages = typeof window !== 'undefined' && window.location.hostname.includes('github.io');
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL !== undefined
     ? import.meta.env.VITE_API_BASE_URL
+    : isGitHubPages
+    ? 'https://veloop-backend.onrender.com'
     : import.meta.env.PROD
     ? ''
     : 'https://veloop-backend.onrender.com';
