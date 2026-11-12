@@ -49,10 +49,29 @@ const WatchAds = () => {
       }
     } catch (error) {
       setAds([]);
-      const errorMsg =
-        error.response?.data?.message ||
-        error.message ||
-        'Unable to connect to advertisement network. Please check your connection.';
+      let errorMsg = 'Unable to connect to advertisement network. Please check your connection.';
+
+      if (error.response) {
+        // Backend responded with an HTTP status code outside 2xx
+        const status = error.response.status;
+        const serverMsg =
+          error.response.data?.message ||
+          (typeof error.response.data === 'string' ? error.response.data : '');
+
+        if (status === 401 || serverMsg.toLowerCase().includes('token')) {
+          errorMsg = 'Session authorization required. Please log in with a verified VELoop account to load real sponsor campaigns.';
+        } else if (status === 429) {
+          errorMsg = 'Campaign rate limit reached. Please wait a moment before checking again.';
+        } else if (status >= 500) {
+          errorMsg = 'The sponsor rewards server is undergoing maintenance. Please retry in a few moments.';
+        } else if (serverMsg) {
+          errorMsg = serverMsg;
+        }
+      } else if (error.request) {
+        // Network or connection failure
+        errorMsg = 'Network connectivity issue. Unable to establish a secure connection with the rewards server.';
+      }
+
       setFetchError(errorMsg);
       if (showSkeleton) {
         showError(errorMsg);

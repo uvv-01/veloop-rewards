@@ -3,23 +3,35 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    userId: 'VL-78291',
-    name: 'Yuvraj Singh',
-    email: 'user@velooprewards.in',
-    token: 'mock_verified_session_jwt',
-    coins: 480,
-    level: 3,
+  // Read existing session from localStorage if available (matching production VELoop schema)
+  const [user, setUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('user');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return {
+      userId: 'VL-78291',
+      name: 'Yuvraj Singh',
+      email: 'user@velooprewards.in',
+      token: localStorage.getItem('token') || localStorage.getItem('veloop_token') || 'mock_verified_session_jwt',
+      coins: 480,
+      level: 3,
+    };
   });
-  
-  const [token, setToken] = useState('mock_verified_session_jwt');
+
+  const [token, setToken] = useState(() => {
+    return localStorage.getItem('token') || localStorage.getItem('veloop_token') || 'mock_verified_session_jwt';
+  });
+
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Persist session token for API interceptor
     if (token) {
       localStorage.setItem('veloop_token', token);
+      if (!localStorage.getItem('token')) {
+        localStorage.setItem('token', token);
+      }
     }
   }, [token]);
 
