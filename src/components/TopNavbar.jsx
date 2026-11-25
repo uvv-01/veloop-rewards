@@ -10,69 +10,82 @@ const TopNavbar = ({ id = 13, navigation = '/Home', title = 'Watch Ads & Earn' }
   return (
     <header
       style={{
-        background: 'rgba(11, 14, 30, 0.85)',
+        background: 'rgba(8, 11, 20, 0.88)',
         backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        borderBottom: '1px solid #273449',
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        padding: '14px 20px',
+        padding: '12px 16px',
       }}
     >
-      <div className="container d-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-center gap-3">
+      <div className="container px-0 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center gap-2 gap-sm-3">
           <button
             onClick={() => navigate(navigation)}
             aria-label="Go back to dashboard"
             style={{
-              background: 'rgba(255, 255, 255, 0.06)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              background: 'rgba(22, 31, 48, 0.85)',
+              border: '1px solid #273449',
               borderRadius: '10px',
-              width: '38px',
-              height: '38px',
+              width: '36px',
+              height: '36px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#ffffff',
+              color: '#F4F6FC',
               transition: 'all 0.2s ease',
+              cursor: 'pointer',
+              flexShrink: 0,
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)')}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#161F30';
+              e.currentTarget.style.borderColor = '#8B5CF6';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(22, 31, 48, 0.85)';
+              e.currentTarget.style.borderColor = '#273449';
+            }}
           >
-            <IoArrowBack size={18} />
+            <IoArrowBack size={16} />
           </button>
           <div>
             <h1
               style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: '#ffffff',
+                fontSize: '16px',
+                fontWeight: 800,
+                color: '#F4F6FC',
                 margin: 0,
                 fontFamily: "'Outfit', sans-serif",
-                letterSpacing: '0.3px',
+                letterSpacing: '-0.3px',
+                lineHeight: 1.2,
               }}
             >
               {title}
             </h1>
-            <span style={{ fontSize: '12px', color: '#64748b' }}>VELoop Rewards Network</span>
+            <span style={{ fontSize: '11px', color: '#98A5B8', fontWeight: 600 }}>
+              VELoop Rewards Network
+            </span>
           </div>
         </div>
 
         {/* Live Balance Badge */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.08))',
-            border: '1px solid rgba(245, 158, 11, 0.3)',
+            background: 'rgba(245, 196, 81, 0.12)',
+            border: '1px solid rgba(245, 196, 81, 0.35)',
             borderRadius: '20px',
-            padding: '6px 14px',
+            padding: '5px 12px',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            gap: '6px',
+            boxShadow: '0 4px 12px rgba(245, 196, 81, 0.1)',
+            flexShrink: 0,
           }}
         >
-          <IoSparkles size={14} color="#f59e0b" />
-          <span style={{ fontSize: '13px', fontWeight: 700, color: '#f59e0b', fontFamily: "'Outfit', sans-serif" }}>
-            {user?.coins ?? 0} VEs
+          <IoSparkles size={14} color="#F5C451" />
+          <span style={{ fontSize: '12px', fontWeight: 800, color: '#F5C451', fontFamily: "'Outfit', sans-serif" }}>
+            {user?.coins ?? 480} VEs
           </span>
         </div>
       </div>

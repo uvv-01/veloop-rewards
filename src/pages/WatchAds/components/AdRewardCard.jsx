@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { TbDeviceTv } from 'react-icons/tb';
-import { IoSparkles, IoTimeOutline, IoCheckmarkCircle } from 'react-icons/io5';
+import { 
+  IoSparkles, 
+  IoTimeOutline, 
+  IoCheckmarkCircle, 
+  IoArrowForward, 
+  IoEyeOutline,
+  IoCheckmarkDone 
+} from 'react-icons/io5';
+import CampaignThumbnail from './CampaignThumbnail';
 import styles from '../WatchAds.module.css';
 
 const AdRewardCard = ({ ad, isWatching, activeSlot, onWatch }) => {
   const [localCooldown, setLocalCooldown] = useState(() => Math.max(0, ad.cooldown || 0));
 
-  // Synchronize with parent ad prop updates
+  // Sync with prop updates from parent
   useEffect(() => {
     setLocalCooldown(Math.max(0, ad.cooldown || 0));
   }, [ad.cooldown]);
@@ -15,7 +22,7 @@ const AdRewardCard = ({ ad, isWatching, activeSlot, onWatch }) => {
   const isLoadingThis = activeSlot === ad.slot;
   const isButtonDisabled = isCooldownActive || isWatching;
 
-  // Local tick countdown decrementer without per-second interval recreation
+  // Single countdown interval per active cooldown
   useEffect(() => {
     if (!isCooldownActive) return;
 
@@ -27,69 +34,96 @@ const AdRewardCard = ({ ad, isWatching, activeSlot, onWatch }) => {
   }, [isCooldownActive]);
 
   return (
-    <div className="col-12 col-lg-10 mx-auto mb-3">
-      <div className={`${styles.adCard} ${isCooldownActive ? styles.adCardCooldown : ''}`}>
-        {/* Decorative Sparkle Highlights */}
-        <span className={styles.sparkle1} />
-        <span className={styles.sparkle2} />
+    <div className="col-12 col-md-6 col-lg-4 mb-4">
+      <div 
+        className={`${styles.adCard} ${isCooldownActive ? styles.adCardCooldown : ''}`}
+        id={`ad-slot-${ad.slot}`}
+      >
+        {/* 16:9 Campaign Thumbnail */}
+        <CampaignThumbnail
+          campaignKey={ad.campaignKey || (ad.slot % 6 === 1 ? 'revolut' : ad.slot % 6 === 2 ? 'nordvpn' : ad.slot % 6 === 3 ? 'tradingview' : ad.slot % 6 === 4 ? 'duolingo' : ad.slot % 6 === 5 ? 'shopify' : 'spotify')}
+          category={ad.category || 'Featured'}
+          duration={ad.duration || `${(ad.slot * 15) % 45 + 15}s`}
+          sponsor={ad.sponsor || 'Verified Partner'}
+          title={ad.title}
+          isWatching={isLoadingThis}
+          isCooldown={isCooldownActive}
+          cooldownSeconds={localCooldown}
+        />
 
-        <div className={styles.adCardLeft}>
-          <div className={styles.adIconBox}>
-            <TbDeviceTv className={styles.adTvIcon} />
-            {isCooldownActive && (
-              <span className={styles.cooldownBadgeIcon}>
-                <IoTimeOutline size={12} />
-              </span>
-            )}
+        {/* Card Body */}
+        <div className={styles.adCardBody}>
+          {/* Header Row: Sponsor Label & Slot # */}
+          <div className={styles.adCardHeaderRow}>
+            <span className={styles.sponsorName}>
+              {ad.sponsor || 'Sponsor Campaign'}
+            </span>
+            <span className={styles.slotBadge}>
+              Slot #{ad.slot}
+            </span>
           </div>
 
-          <div className={styles.adInfo}>
-            <div className="d-flex align-items-center gap-2">
-              <h5 className={styles.adTitle}>Sponsored Ad Placement</h5>
-              <span className={styles.slotTag}>Slot #{ad.slot}</span>
+          {/* Advertisement Title */}
+          <h3 className={styles.adCardTitle} title={ad.title}>
+            {ad.title || `Sponsored Video Placement #${ad.slot}`}
+          </h3>
+
+          {/* Short Description */}
+          <p className={styles.adCardDesc}>
+            {ad.description || 'Watch this interactive video spot to completion to receive verified platform credits.'}
+          </p>
+
+          {/* Reward & Status Badges Row */}
+          <div className={styles.adMetaRow}>
+            <div className={styles.rewardPill}>
+              <IoSparkles className={styles.rewardSparkleIcon} />
+              <span className={styles.rewardNumber}>+{ad.coins || 15}</span>
+              <span className={styles.rewardCurrency}>VEs</span>
             </div>
 
-            <div className={styles.rewardLine}>
-              <div className={styles.coinBadge}>
-                <IoSparkles className={styles.coinIcon} />
-                <span className={styles.coinAmount}>+{ad.coins}</span>
-                <span className={styles.coinLabel}>VEs</span>
-              </div>
-
-              {isCooldownActive ? (
-                <span className={styles.statusCooldown}>
+            <div className={styles.statusBadgeWrap}>
+              {isLoadingThis ? (
+                <span className={styles.badgeWatching}>
+                  <span className={styles.miniSpinner} />
+                  <span>Watching</span>
+                </span>
+              ) : isCooldownActive ? (
+                <span className={styles.badgeCooldown}>
                   <IoTimeOutline size={13} />
-                  <span>Cooldown: {localCooldown}s</span>
+                  <span>{localCooldown}s</span>
                 </span>
               ) : (
-                <span className={styles.statusReady}>
+                <span className={styles.badgeAvailable}>
                   <IoCheckmarkCircle size={13} />
-                  <span>Ready to Claim</span>
+                  <span>Available</span>
                 </span>
               )}
             </div>
           </div>
-        </div>
 
-        <div className={styles.adCardRight}>
+          {/* Full-Width Action Button */}
           <button
-            className={`${styles.watchButton} ${isLoadingThis ? styles.buttonLoading : ''}`}
+            type="button"
+            className={`${styles.adCardCtaBtn} ${isLoadingThis ? styles.btnLoading : ''}`}
             disabled={isButtonDisabled}
             onClick={() => onWatch(ad.slot)}
-            aria-label={`Watch ad slot ${ad.slot} for ${ad.coins} VEs`}
+            aria-label={`Watch ad slot ${ad.slot} for ${ad.coins || 15} VEs`}
           >
             {isLoadingThis ? (
-              <span className="d-flex align-items-center gap-2">
+              <span className="d-flex align-items-center justify-content-center gap-2">
                 <span className={styles.spinner} />
-                <span>Verifying...</span>
+                <span>Verifying Placement...</span>
               </span>
             ) : isCooldownActive ? (
-              <span className="d-flex align-items-center gap-1">
+              <span className="d-flex align-items-center justify-content-center gap-2">
                 <IoTimeOutline size={16} />
-                <span>{localCooldown}s</span>
+                <span>Cooldown: {localCooldown}s</span>
               </span>
             ) : (
-              <span>Watch Ad</span>
+              <span className="d-flex align-items-center justify-content-center gap-2">
+                <span>Watch Now</span>
+                <IoArrowForward size={16} />
+              </span>
             )}
           </button>
         </div>

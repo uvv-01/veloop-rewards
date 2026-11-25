@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoHelpCircleOutline, IoShieldCheckmarkOutline } from 'react-icons/io5';
 
-const Footer = ({ name = 'Watch AD', link = '/help-center/earning/watch-ads', mt = 50, mb = 37 }) => {
+const Footer = ({ name = 'Watch AD', link = '/help-center/earning/watch-ads', mt = 40, mb = 30 }) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -10,9 +10,9 @@ const Footer = ({ name = 'Watch AD', link = '/help-center/earning/watch-ads', mt
       style={{
         marginTop: `${mt}px`,
         marginBottom: `${mb}px`,
-        padding: '30px 20px 20px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-        color: '#64748b',
+        padding: '32px 20px 24px',
+        borderTop: '1px solid #273449',
+        color: '#98A5B8',
         fontSize: '13px',
       }}
     >
@@ -26,22 +26,22 @@ const Footer = ({ name = 'Watch AD', link = '/help-center/earning/watch-ads', mt
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '8px 18px',
+                padding: '8px 20px',
                 borderRadius: '20px',
-                background: 'rgba(59, 130, 246, 0.1)',
-                border: '1px solid rgba(59, 130, 246, 0.25)',
-                color: '#60a5fa',
-                fontWeight: 600,
+                background: 'rgba(139, 92, 246, 0.12)',
+                border: '1px solid rgba(139, 92, 246, 0.3)',
+                color: '#8B5CF6',
+                fontWeight: 700,
                 fontSize: '13px',
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)';
-                e.currentTarget.style.borderColor = '#3b82f6';
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.22)';
+                e.currentTarget.style.borderColor = '#8B5CF6';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.25)';
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)';
               }}
             >
               <IoHelpCircleOutline size={16} />
@@ -52,20 +52,20 @@ const Footer = ({ name = 'Watch AD', link = '/help-center/earning/watch-ads', mt
 
         {/* Global Policy Links */}
         <div className="d-flex justify-content-center flex-wrap gap-4 mb-3">
-          <Link to="/terms-and-conditions" className="text-secondary hover-white">Terms of Service</Link>
-          <Link to="/privacy-policy" className="text-secondary hover-white">Privacy Policy</Link>
-          <Link to="/customer-service" className="text-secondary hover-white">Compliance & Support</Link>
-          <Link to="/anti-fraud-policy" className="text-secondary hover-white">Anti-Fraud Rules</Link>
+          <Link to="/terms-and-conditions" style={{ color: '#98A5B8', transition: 'color 0.2s' }}>Terms of Service</Link>
+          <Link to="/privacy-policy" style={{ color: '#98A5B8', transition: 'color 0.2s' }}>Privacy Policy</Link>
+          <Link to="/customer-service" style={{ color: '#98A5B8', transition: 'color 0.2s' }}>Compliance & Support</Link>
+          <Link to="/anti-fraud-policy" style={{ color: '#98A5B8', transition: 'color 0.2s' }}>Anti-Fraud Rules</Link>
         </div>
 
         <div className="d-flex align-items-center justify-content-center gap-2 mb-2">
-          <IoShieldCheckmarkOutline size={14} color="#10b981" />
-          <span style={{ fontSize: '12px', color: '#475569' }}>
+          <IoShieldCheckmarkOutline size={15} color="#42D6A4" />
+          <span style={{ fontSize: '12px', color: '#64748B' }}>
             Verified Server-Authoritative Rewards Engine
           </span>
         </div>
 
-        <p className="m-0" style={{ fontSize: '12px', color: '#475569' }}>
+        <p className="m-0" style={{ fontSize: '12px', color: '#64748B' }}>
           &copy; {currentYear} VELOOP Rewards. All rights reserved.
         </p>
       </div>

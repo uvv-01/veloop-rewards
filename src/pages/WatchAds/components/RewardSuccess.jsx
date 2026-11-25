@@ -165,10 +165,10 @@ const RewardSuccess = ({ coinsEarned, onClose }) => {
           Thank you for engaging with our verified sponsor campaign.
         </p>
 
-        <div className={styles.rewardPill}>
-          <IoSparkles size={20} color="#f59e0b" />
-          <span className={styles.rewardPillAmount}>+{coinsEarned}</span>
-          <span className={styles.rewardPillUnit}>VEs Credited</span>
+        <div className={styles.modalRewardBox}>
+          <IoSparkles size={22} color="#F5C451" />
+          <span className={styles.modalRewardAmount}>+{coinsEarned}</span>
+          <span className={styles.modalRewardUnit}>VEs Credited</span>
         </div>
 
         <p className={styles.modalFootnote}>
